@@ -27,6 +27,12 @@ public:
 
     void ApplyCheats();
     void ApplyGSButton();
+	void ModifyMemory8(uint32_t Address, uint8_t Value);
+	void ModifyMemory8(uint32_t Address, uint8_t Value, bool noRecomp);
+	uint8_t GetMemory8(uint32_t Address);
+	void ModifyMemory16(uint32_t Address, uint16_t Value);
+	void ModifyMemory16(uint32_t Address, uint16_t Value, bool noRecomp);
+	uint16_t CCheats::GetMemory16(uint32_t Address);
     void LoadCheats(bool DisableSelected, CPlugins * Plugins);
 
     static bool IsValid16BitCode(const char * CheatString);
@@ -66,7 +72,6 @@ private:
 
     bool LoadCode(const stdstr & CheatEntry, SettingID ExtensionSetting, int ExtensionIndex);
     void ApplyCheatEntry(CODES & CodeEntry, int32_t CurrentEntry);
-    void ModifyMemory8(uint32_t Address, uint8_t Value);
-    void ModifyMemory16(uint32_t Address, uint16_t Value);
     void ResetCodes(void);
+
 };

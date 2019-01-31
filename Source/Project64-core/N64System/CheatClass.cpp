@@ -20,6 +20,12 @@
 #include <Project64-core/N64System/Recompiler/RecompilerClass.h>
 #include <stdlib.h>
 
+
+
+
+
+
+
 CCheats::CCheats(CMipsMemoryVM & MMU) :
     m_MMU(MMU)
 {
@@ -364,7 +370,10 @@ bool CCheats::IsValid16BitCode(const char * CheatString)
     return true;
 }
 
-void CCheats::ModifyMemory8(uint32_t Address, uint8_t Value)
+void CCheats::ModifyMemory8(uint32_t Address, uint8_t Value) {
+	ModifyMemory8(Address, Value, false);
+}
+void CCheats::ModifyMemory8(uint32_t Address, uint8_t Value, bool noRecomp)
 {
     MEM_VALUE8 OriginalValue;
     if (!m_MMU.LB_VAddr(Address, OriginalValue.Original))
@@ -378,13 +387,16 @@ void CCheats::ModifyMemory8(uint32_t Address, uint8_t Value)
     OriginalValue.Changed = Value;
     std::pair<ORIGINAL_VALUES8::iterator, bool> itr = m_OriginalValues8.insert(ORIGINAL_VALUES8::value_type(Address, OriginalValue));
     m_MMU.SB_VAddr(Address, OriginalValue.Changed);
-    if (g_Recompiler)
+    if (g_Recompiler && !noRecomp)
     {
         g_Recompiler->ClearRecompCode_Virt(Address & ~0xFFF, 0x1000, CRecompiler::Remove_Cheats);
     }
 }
 
-void CCheats::ModifyMemory16(uint32_t Address, uint16_t Value)
+void CCheats::ModifyMemory16(uint32_t Address, uint16_t Value) {
+	ModifyMemory16(Address, Value, false);
+}
+void CCheats::ModifyMemory16(uint32_t Address, uint16_t Value, bool noRecomp)
 {
     MEM_VALUE16 OriginalValue;
     if (!m_MMU.LH_VAddr(Address, OriginalValue.Original))
@@ -398,11 +410,46 @@ void CCheats::ModifyMemory16(uint32_t Address, uint16_t Value)
     OriginalValue.Changed = Value;
     std::pair<ORIGINAL_VALUES16::iterator, bool> itr = m_OriginalValues16.insert(ORIGINAL_VALUES16::value_type(Address, OriginalValue));
     m_MMU.SH_VAddr(Address, OriginalValue.Changed);
-    if (g_Recompiler)
+    if (g_Recompiler && !noRecomp)
     {
         g_Recompiler->ClearRecompCode_Virt(Address & ~0xFFF, 0x1000, CRecompiler::Remove_Cheats);
     }
 }
+
+// Added by Alex:
+uint8_t CCheats::GetMemory8(uint32_t Address)
+{
+
+
+	MEM_VALUE8 OriginalValue;
+	m_MMU.LB_VAddr(Address, OriginalValue.Original);
+	return OriginalValue.Original;
+
+	//if (m_MMU.LB_VAddr(Address, OriginalValue.Original))
+	//{
+	//	return OriginalValue.Original;
+	//}
+	//else {
+	//	return 0x00;
+	//}
+}
+
+uint16_t CCheats::GetMemory16(uint32_t Address)
+{
+	MEM_VALUE16 OriginalValue;
+	m_MMU.LH_VAddr(Address, OriginalValue.Original);
+	return OriginalValue.Original;
+
+	//if (m_MMU.LH_VAddr(Address, OriginalValue.Original))
+	//{
+	//	return OriginalValue.Original;
+	//}
+	//else {
+	//	return 0x0000;
+	//}
+	
+}
+
 
 void CCheats::ApplyCheatEntry(CODES & CodeEntry, int32_t CurrentEntry)
 {

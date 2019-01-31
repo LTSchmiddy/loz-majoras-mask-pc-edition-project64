@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <Project64-core/AppInit.h>
+#include <Project64-core/GameMods.h>
 #include "Multilanguage\LanguageSelector.h"
 #include "Settings/UISettings.h"
 
@@ -20,22 +21,49 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
         CMainMenu MainMenu(&MainWindow);
         CDebuggerUI Debugger;
         g_Debugger = &Debugger;
+		// Added By Alex
+		GameMods_DBUI = &Debugger;
+
+		//GameMods_MainWindow = &MainWindow;
+		//GameMods_MainMenu = &MainMenu;
+
         g_Plugins->SetRenderWindows(&MainWindow, &HiddenWindow);
         Notify().SetMainWindow(&MainWindow);
         CSupportWindow SupportWindow;
 
-        if (g_Settings->LoadStringVal(Cmd_RomFile).length() > 0)
+
+		//Added by Alex:
+
+		bool LoadRomNow = true;
+		string romPath = g_Settings->LoadStringVal(Cmd_RomFile);
+
+		if (romPath.length() <= 0) {
+			romPath = DEFAULT_ROM_PATH_ARG;
+		}
+		//else if (romPath.compare(SHOW_GUI_ARG) == 0) {
+		else if (romPath.compare(SHOW_GUI_ARG) == 0) {
+			LoadRomNow = false;
+
+		}
+		else if (romPath.compare(NO_MAIN_JS_ARG) == 0) {
+			LoadRomNow = false;
+			GameMods_UseJSMods = false;
+		}
+
+        if (LoadRomNow)
+        //if (romPath.length() > 0)
         {
             MainWindow.Show(true);	//Show the main window
             //N64 ROM or 64DD Disk
-            stdstr ext = CPath(g_Settings->LoadStringVal(Cmd_RomFile)).GetExtension();
+            stdstr ext = CPath(romPath).GetExtension();
             if (!(_stricmp(ext.c_str(), "ndd") == 0))
             {
                 //File Extension is not *.ndd so it should be a N64 ROM
-                CN64System::RunFileImage(g_Settings->LoadStringVal(Cmd_RomFile).c_str());
+                CN64System::RunFileImage(romPath.c_str());
             }
             else
             {
+
                 //Ext is *.ndd, so it should be a disk file.
                 if (CN64System::RunDiskImage(g_Settings->LoadStringVal(Cmd_RomFile).c_str()))
                 {
@@ -54,7 +82,7 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
         }
         else
         {
-            SupportWindow.Show(reinterpret_cast<HWND>(MainWindow.GetWindowHandle()));
+            //SupportWindow.Show(reinterpret_cast<HWND>(MainWindow.GetWindowHandle()));
             if (UISettingsLoadBool(RomBrowser_Enabled))
             {
                 WriteTrace(TraceUserInterface, TraceDebug, "Show Rom Browser");

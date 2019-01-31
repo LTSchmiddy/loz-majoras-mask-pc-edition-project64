@@ -181,6 +181,12 @@ const fs = {
         }
         return new fs.Stats(rawStats)
     },
+    getcwd: function()
+    {
+        // var cRet _native.fsGetCwd();
+        // return cRet.replace("\\", "/");
+        return _native.fsGetCwd()
+    },
     mkdir: function(path)
     {
         return _native.fsMkDir(path)
@@ -243,6 +249,22 @@ const system = {
     pause: function()
     {
         _native.pause()
+    },
+    sleep: function(sleepTime)
+    {
+        _native.sleep(sleepTime)
+    },
+    getinput: function(padNum, button)
+    {
+        return _native.getinput(padNum, button)
+    },
+    getinputbits: function(padNum, button)
+    {
+        return _native.getinputbits(padNum, button)
+    },
+    pressinput: function(padNum, button, pressed)
+    {
+        _native.pressinput(padNum, button, pressed)
     },
     resume: function()
     {

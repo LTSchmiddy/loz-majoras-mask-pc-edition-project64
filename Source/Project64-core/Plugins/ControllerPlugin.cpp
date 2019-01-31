@@ -13,6 +13,7 @@
 #include <Project64-core/N64System/N64RomClass.h>
 #include <Project64-core/N64System/Mips/RegisterClass.h>
 #include "ControllerPlugin.h"
+#include <Project64-core/GameMods.h>
 
 CControl_Plugin::CControl_Plugin(void) :
     WM_KeyDown(NULL),
@@ -144,6 +145,7 @@ void CControl_Plugin::UnloadPluginDetails(void)
     WM_KeyUp = NULL;
 }
 
+// Query Controller?
 void CControl_Plugin::UpdateKeys(void)
 {
     if (!m_AllocatedControllers) { return; }
@@ -152,14 +154,20 @@ void CControl_Plugin::UpdateKeys(void)
         if (!m_Controllers[cont]->m_Present) { continue; }
         if (!m_Controllers[cont]->m_RawData)
         {
+			//BUTTONS * myButtons = &m_Controllers[cont]->m_Buttons;
+            //GetKeys(cont, myButtons);
             GetKeys(cont, &m_Controllers[cont]->m_Buttons);
+
+			//myButtons->Value = myButtons->Value | (0x01 << 4);
+			//myButtons->B_BUTTON = 1;
         }
         else
         {
             g_Notify->BreakPoint(__FILE__, __LINE__);
         }
     }
-    if (ReadController) { ReadController(-1, NULL); }
+    if (ReadController) { GameMods_DoReadController(-1, NULL); }
+    //if (ReadController) { ReadController(-1, NULL); }
 }
 
 void CControl_Plugin::SetControl(CControl_Plugin const * const Plugin)

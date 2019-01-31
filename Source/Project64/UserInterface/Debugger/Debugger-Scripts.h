@@ -105,7 +105,9 @@ public:
 
     void EvaluateInSelectedInstance(char* code);
     void RunSelected();
+    void RunScriptFile(char *scriptPath);
     void StopSelected();
+    void StopScriptFile(char *scriptName);
 
     LRESULT OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
     LRESULT OnDestroy(void)

@@ -2,6 +2,10 @@
 
 #include <commctrl.h>
 
+#define DEFAULT_ROM_PATH_ARG "./ROMFile/main.n64"
+#define SHOW_GUI_ARG "showgui"
+#define NO_MAIN_JS_ARG "debugjs"
+
 class CConfigSettingSection;
 class CSettingsPage;
 

@@ -1,0 +1,145 @@
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---
+*** DLL Attach (2.5.3.844-g25bd63cc-dirty-Debugbuild | built on Jan 22 2019 at 15:42:35)
+  (compiled in ANSI mode, language detection DISABLED.)
+CALLED: GetDllInfo
+*** DLL Detach
+---DEBUG FILE CLOSED---

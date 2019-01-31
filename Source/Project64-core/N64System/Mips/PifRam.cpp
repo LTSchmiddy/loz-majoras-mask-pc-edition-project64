@@ -21,6 +21,7 @@
 #include <Project64-core/N64System/Mips/Rumblepak.h>
 #include <Project64-core/N64System/Mips/Mempak.h>
 #include <Project64-core/Logging.h>
+#include "GameMods.h"
 
 CPifRam::CPifRam(bool SavesReadOnly) :
     CEeprom(SavesReadOnly)
@@ -104,7 +105,8 @@ void CPifRam::PifRamRead()
                     {
                         if (g_Plugins->Control()->ReadController)
                         {
-                            g_Plugins->Control()->ReadController(Channel, &m_PifRam[CurPos]);
+							GameMods_DoReadController(Channel, &m_PifRam[CurPos]);
+                            //g_Plugins->Control()->ReadController(Channel, &m_PifRam[CurPos]);
                         }
                     }
                     else
@@ -128,7 +130,8 @@ void CPifRam::PifRamRead()
     }
     if (g_Plugins->Control()->ReadController)
     {
-        g_Plugins->Control()->ReadController(-1, NULL);
+		GameMods_DoReadController(-1, NULL);
+        //g_Plugins->Control()->ReadController(-1, NULL);
     }
 }
 
@@ -584,25 +587,30 @@ void CPifRam::ReadControllerCommand(int32_t Control, uint8_t * Command)
                 if (Command[0] != 1 || Command[1] != 4) { g_Notify->DisplayError("What am I meant to do with this Controller Command"); }
             }
 
+
+
             const uint32_t buttons = g_BaseSystem->GetButtons(Control);
+            //const uint32_t buttons = GameMods_DoInputSpoofing(Control);
+            //const uint32_t buttons = 0;
+			
             memcpy(&Command[3], &buttons, sizeof(uint32_t));
         }
         break;
     case 0x02: //read from controller pack
         if (Controllers[Control].Present != 0)
         {
-            switch (Controllers[Control].Plugin)
-            {
-            case PLUGIN_RAW: if (g_Plugins->Control()->ReadController) { g_Plugins->Control()->ReadController(Control, Command); } break;
+            switch (Controllers[Control].Plugin) {
+            case PLUGIN_RAW: if (g_Plugins->Control()->ReadController) { GameMods_DoReadController(Control, Command); } break;
+            //case PLUGIN_RAW: if (g_Plugins->Control()->ReadController) { g_Plugins->Control()->ReadController(Control, Command); } break;
             }
         }
         break;
     case 0x03: //write controller pak
-        if (Controllers[Control].Present != 0)
-        {
+        if (Controllers[Control].Present != 0) {
             switch (Controllers[Control].Plugin)
-            {
-            case PLUGIN_RAW: if (g_Plugins->Control()->ReadController) { g_Plugins->Control()->ReadController(Control, Command); } break;
+			{
+            case PLUGIN_RAW: if (g_Plugins->Control()->ReadController) { GameMods_DoReadController(Control, Command); } break;
+            //case PLUGIN_RAW: if (g_Plugins->Control()->ReadController) { g_Plugins->Control()->ReadController(Control, Command); } break;
             }
         }
         break;

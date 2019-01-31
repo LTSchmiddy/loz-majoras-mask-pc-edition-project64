@@ -6,6 +6,22 @@
 #include "ScriptHook.h"
 #include "Breakpoints.h"
 
+#include <Project64-core/GameMods.h>
+
+//Added By Alex:
+#include <stdio.h>  /* defines FILENAME_MAX */
+// #define WINDOWS  /* uncomment this line to use it for windows.*/ 
+#ifdef WINDOWS
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrentDir getcwd
+#endif
+#include<iostream>
+// End of Addition
+
+
 static BOOL ConnectEx(SOCKET s, const SOCKADDR* name, int namelen, PVOID lpSendBuffer,
     DWORD dwSendDataLength, LPDWORD lpdwBytesSent, LPOVERLAPPED lpOverlapped);
 
@@ -44,11 +60,16 @@ CScriptInstance::CScriptInstance(CDebuggerUI* debugger)
 {
     m_Debugger = debugger;
     m_Ctx = duk_create_heap_default();
-    m_ScriptSystem = m_Debugger->ScriptSystem();
+
+	//if (m_Debugger) {
+	m_ScriptSystem = m_Debugger->ScriptSystem();
+	//}
+
     m_NextListenerId = 0;
     m_hIOCompletionPort = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, 0);
     InitializeCriticalSection(&m_CriticalSection);
     CacheInstance(this);
+
 }
 
 CScriptInstance::~CScriptInstance()
@@ -94,13 +115,16 @@ void CScriptInstance::SetState(INSTANCE_STATE state)
 void CScriptInstance::StateChanged()
 {
     // todo mutex might be needed here
-    m_Debugger->Debug_RefreshScriptsWindow();
+	//if (InDebugUI) {
+		m_Debugger->Debug_RefreshScriptsWindow();
+	//}
+
     m_ScriptSystem->DeleteStoppedInstances();
 }
 
 DWORD CALLBACK CScriptInstance::StartThread(CScriptInstance* _this)
 {
-    _this->StartScriptProc();
+    _this->StartScriptProc(); 
     return 0;
 }
 
@@ -146,8 +170,10 @@ void CScriptInstance::StartScriptProc()
         {
             const char* errorText = duk_safe_to_string(ctx, -1);
             //MessageBox(NULL, duk_safe_to_string(ctx, -1), "Script error", MB_OK | MB_ICONWARNING);
-            m_Debugger->Debug_LogScriptsWindow(errorText);
-            m_Debugger->Debug_LogScriptsWindow("\r\n");
+			//if (InDebugUI) {
+				m_Debugger->Debug_LogScriptsWindow(errorText);
+				m_Debugger->Debug_LogScriptsWindow("\r\n");
+			//}
             SetState(STATE_STOPPED);
             return;
         }
@@ -569,8 +595,10 @@ void CScriptInstance::Invoke(void* heapptr, uint32_t param)
     if (status != DUK_EXEC_SUCCESS)
     {
         const char* errorText = duk_safe_to_string(m_Ctx, -1);
-        m_Debugger->Debug_LogScriptsWindow(errorText);
-        m_Debugger->Debug_LogScriptsWindow("\r\n");
+		//if (InDebugUI) {
+			m_Debugger->Debug_LogScriptsWindow(errorText);
+			m_Debugger->Debug_LogScriptsWindow("\r\n");
+		//}
     }
 
     duk_pop(m_Ctx);
@@ -589,8 +617,10 @@ void CScriptInstance::Invoke2(void* heapptr, uint32_t param, uint32_t param2)
     if (status != DUK_EXEC_SUCCESS)
     {
         const char* errorText = duk_safe_to_string(m_Ctx, -1);
-        m_Debugger->Debug_LogScriptsWindow(errorText);
-        m_Debugger->Debug_LogScriptsWindow("\r\n");
+		//if (InDebugUI) {
+			m_Debugger->Debug_LogScriptsWindow(errorText);
+			m_Debugger->Debug_LogScriptsWindow("\r\n");
+		//}
     }
 
     duk_pop(m_Ctx);
@@ -1456,8 +1486,9 @@ duk_ret_t CScriptInstance::js_ConsolePrint(duk_context* ctx)
 {
     CScriptInstance* _this = FetchInstance(ctx);
     const char* text = duk_to_string(ctx, 0);
-
-    _this->m_Debugger->Debug_LogScriptsWindow(text);
+	if (_this->InDebugUI) {
+		_this->m_Debugger->Debug_LogScriptsWindow(text);
+	}
 
     duk_pop_n(ctx, 1);
 
@@ -1466,7 +1497,10 @@ duk_ret_t CScriptInstance::js_ConsolePrint(duk_context* ctx)
 
 duk_ret_t CScriptInstance::js_ConsoleClear(duk_context* ctx)
 {
-    FetchInstance(ctx)->m_Debugger->Debug_ClearScriptsWindow();
+	CScriptInstance* _this = FetchInstance(ctx);
+	if (_this->InDebugUI) {
+		_this->m_Debugger->Debug_ClearScriptsWindow();
+	}
     return 1;
 }
 
@@ -1480,6 +1514,90 @@ duk_ret_t CScriptInstance::js_Pause(duk_context* /*ctx*/)
 {
     g_System->Pause();
     return 1;
+}
+
+duk_ret_t CScriptInstance::js_Sleep(duk_context* ctx)
+{
+
+	Sleep(duk_get_int(ctx, 0));
+	return 1;
+}
+
+duk_ret_t CScriptInstance::js_GetInput(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 2)
+	{
+		duk_push_false(ctx);
+		return 1;
+	}
+
+	int padNum = duk_get_int(ctx, 0);
+	int buttonNum = duk_get_int(ctx, 1);
+
+	duk_pop_n(ctx, nargs);
+
+	bool result = GameMods_CheckInputButton(padNum, buttonNum);
+
+	duk_push_boolean(ctx, result);
+	//duk_push_int(ctx, GameMods_CheckInput(padNum));
+
+	return 1;
+
+}
+
+duk_ret_t CScriptInstance::js_GetInputBits(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 2)
+	{
+		duk_push_false(ctx);
+		return 1;
+	}
+
+	int padNum = duk_get_int(ctx, 0) - 1;
+	int buttonNum = duk_get_int(ctx, 1);
+
+	duk_pop_n(ctx, nargs);
+
+	//bool result = GameMods_CheckInputButton(padNum, buttonNum);
+
+	//duk_push_boolean(ctx, result);
+	duk_push_int(ctx, GameMods_CheckInput(padNum));
+
+	return 1;
+
+}
+
+duk_ret_t CScriptInstance::js_PressInput(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 2)
+	{
+		//duk_push_false(ctx);
+		return 1;
+	}
+
+	int padNum = duk_get_int(ctx, 0) - 1;
+	int buttonNum = duk_get_int(ctx, 1);
+	bool pressed = duk_get_boolean(ctx, 2);
+
+	//if (pressed) {
+	//	setHealth(0x30);
+	//}
+
+	duk_pop_n(ctx, nargs);
+	GameMods_PressInputButton(padNum, buttonNum, pressed);
+
+
+	//duk_push_boolean(ctx, result);
+	//duk_push_int(ctx, GameMods_CheckInput(padNum));
+
+	return 1;
+
 }
 
 duk_ret_t CScriptInstance::js_ShowCommands(duk_context* ctx)
@@ -1496,8 +1614,11 @@ duk_ret_t CScriptInstance::js_ShowCommands(duk_context* ctx)
     }
 
     duk_pop_n(ctx, nargs);
+	
+	if (_this->InDebugUI) {
+		_this->m_Debugger->Debug_ShowCommandsLocation(address, false);
+	}
 
-    _this->m_Debugger->Debug_ShowCommandsLocation(address, false);
     return 1;
 }
 
@@ -1819,6 +1940,44 @@ duk_ret_t CScriptInstance::js_FSMkDir(duk_context* ctx)
     }
 
     return 1;
+}
+
+
+
+std::string GetCurrentWorkingDir(void) {
+	char buff[FILENAME_MAX];
+	GetCurrentDir(buff, FILENAME_MAX);
+	std::string current_working_dir(buff);
+	return current_working_dir;
+}
+
+
+duk_ret_t CScriptInstance::js_FSGetCwd(duk_context* ctx)
+{
+	//int nargs = duk_get_top(ctx);
+
+	//if (nargs < 1)
+	//{
+	//	duk_push_false(ctx);
+	//	return 1;
+	//}
+
+	//const char* path = duk_get_string(ctx, 0);
+
+	//duk_pop_n(ctx, nargs);
+
+	//if (CreateDirectory(path, NULL))
+	//{
+	//	duk_push_true(ctx);
+	//}
+	//else
+	//{
+	//	duk_push_false(ctx);
+	//}
+
+	duk_push_string(ctx, GetCurrentWorkingDir().c_str());
+
+	return 1;
 }
 
 duk_ret_t CScriptInstance::js_FSRmDir(duk_context* ctx)

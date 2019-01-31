@@ -88,6 +88,9 @@
     <Filter Include="Header Files\N64 System\Recompiler\Arm">
       <UniqueIdentifier>{98453fda-8903-4074-8c4c-831c3f2bd63d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Mods">
+      <UniqueIdentifier>{39a60c75-37b5-426e-8437-d5727f6f894b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -341,6 +344,12 @@
     </ClCompile>
     <ClCompile Include="Settings\SettingType\SettingsType-Enhancements.cpp">
       <Filter>Source Files\Settings\SettingType</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Majora%27s Mask - PC Edition\LOZ-P64\project64\Source\Project64-core\Mods\JSMods.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMods.cpp">
+      <Filter>Source Files\N64 System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -661,6 +670,12 @@
     </ClInclude>
     <ClInclude Include="Settings\SettingType\SettingsType-Enhancements.h">
       <Filter>Header Files\Settings\SettingType</Filter>
+    </ClInclude>
+    <ClInclude Include="Mods\JSMods.h">
+      <Filter>Header Files\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMods.h">
+      <Filter>Header Files\N64 System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

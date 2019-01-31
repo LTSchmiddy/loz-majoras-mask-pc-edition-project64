@@ -65,6 +65,8 @@ public:
     CScriptInstance(CDebuggerUI* debugger);
     ~CScriptInstance();
 
+	bool InDebugUI = true;
+
     void Start(char* path);
     void ForceStop();
     void Invoke(void* heapptr, uint32_t param = 0);
@@ -95,6 +97,8 @@ private:
     CScriptSystem*      m_ScriptSystem;
 
     INSTANCE_STATE      m_State;
+
+	
 
     static DWORD CALLBACK StartThread(CScriptInstance* _this);
     void StartScriptProc();
@@ -172,6 +176,10 @@ private:
 
     static duk_ret_t js_BreakHere(duk_context*);
     static duk_ret_t js_Pause(duk_context*); // () ; pauses emulation
+    static duk_ret_t js_Sleep(duk_context*); // (sleepTime) ; pauses emulation
+    static duk_ret_t js_GetInput(duk_context*); // (padNum, button) ; pauses emulation
+    static duk_ret_t js_GetInputBits(duk_context*); // (padNum, button) ; pauses emulation
+    static duk_ret_t js_PressInput(duk_context*); // (padNum, button) ; pauses emulation
     static duk_ret_t js_ShowCommands(duk_context*); // ([address]) ; shows commands window
 
     static duk_ret_t js_ScreenPrint(duk_context*); // (x, y, text)
@@ -182,13 +190,17 @@ private:
     static duk_ret_t js_FSRead(duk_context*); // (fd, buffer, offset, length, position)
     static duk_ret_t js_FSFStat(duk_context*); // (fd)
     static duk_ret_t js_FSStat(duk_context*); // (path)
-    static duk_ret_t js_FSMkDir(duk_context*); // (path)
+    static duk_ret_t js_FSMkDir(duk_context*); // ()
+    static duk_ret_t js_FSGetCwd(duk_context*); // (path)
     static duk_ret_t js_FSRmDir(duk_context*); // (path)
     static duk_ret_t js_FSUnlink(duk_context*); // (path)
     static duk_ret_t js_FSReadDir(duk_context*); // (path)
 
     static constexpr duk_function_list_entry NativeFunctions[] =
     {
+		{ "getinput",       js_GetInput,	   DUK_VARARGS },
+		{ "getinputbits",   js_GetInputBits,   DUK_VARARGS },
+		{ "pressinput",     js_PressInput,	   DUK_VARARGS },
         { "addCallback",    js_AddCallback,    DUK_VARARGS },
         { "removeCallback", js_RemoveCallback, DUK_VARARGS },
 
@@ -226,6 +238,7 @@ private:
         { "consolePrint",   js_ConsolePrint,   DUK_VARARGS },
         { "consoleClear",   js_ConsoleClear,   DUK_VARARGS },
         { "pause",          js_Pause,          DUK_VARARGS },
+        { "sleep",          js_Sleep,          DUK_VARARGS },
         { "showCommands",   js_ShowCommands,   DUK_VARARGS },
 
         { "breakHere",      js_BreakHere,      DUK_VARARGS },
@@ -240,6 +253,7 @@ private:
         { "fsStat",         js_FSStat,         DUK_VARARGS },
         { "fsUnlink",       js_FSUnlink,       DUK_VARARGS },
         { "fsMkDir",        js_FSMkDir,        DUK_VARARGS },
+        { "fsGetCwd",       js_FSGetCwd,       DUK_VARARGS },
         { "fsRmDir",        js_FSRmDir,        DUK_VARARGS },
         { "fsReadDir",      js_FSReadDir,      DUK_VARARGS },
         { NULL, NULL, 0 }

@@ -105,7 +105,7 @@ private:
     void CreateStatusBar(void);
     void Resize(DWORD fwSizeType, WORD nWidth, WORD nHeight); //responding to WM_SIZE
     void AddRecentRom(const char * ImagePath);
-    void SetWindowCaption(const wchar_t * Caption);
+	void SetWindowCaption(const wchar_t * Caption);
     void ShowRomBrowser(void);
 
     friend DWORD CALLBACK AboutBoxProc(HWND, DWORD, DWORD, DWORD);

@@ -395,7 +395,26 @@ void CDebugScripts::RunSelected()
     }
 }
 
+void CDebugScripts::RunScriptFile(char *scriptName)
+{
+	INSTANCE_STATE state = m_Debugger->ScriptSystem()->GetInstanceState(scriptName);
+
+	if (state == STATE_INVALID || state == STATE_STOPPED)
+	{
+		m_Debugger->ScriptSystem()->RunScript(scriptName);
+	}
+	else
+	{
+		m_Debugger->Debug_LogScriptsWindow("[Error: Script is already running]\n");
+	}
+}
+
 void CDebugScripts::StopSelected()
 {
     m_Debugger->ScriptSystem()->StopScript(m_SelectedScriptName);
+}
+
+void CDebugScripts::StopScriptFile(char *scriptName)
+{
+	m_Debugger->ScriptSystem()->StopScript(scriptName);
 }
