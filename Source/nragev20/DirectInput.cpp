@@ -1,4 +1,4 @@
-/*	
+	/*	
 	N-Rage`s Dinput8 Plugin
     (C) 2002, 2006  Norbert Wladyka
 

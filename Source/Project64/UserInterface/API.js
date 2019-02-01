@@ -254,8 +254,11 @@ const system = {
     {
         _native.sleep(sleepTime)
     },
-    getinput: function(padNum, button)
+    getkey: function(key)
     {
+        return _native.getkey(key)
+    },
+    getinput: function (padNum, button) {
         return _native.getinput(padNum, button)
     },
     getinputbits: function(padNum, button)
@@ -264,7 +267,14 @@ const system = {
     },
     pressinput: function(padNum, button, pressed)
     {
+        //console.log("inputpressed");
         _native.pressinput(padNum, button, pressed)
+    },
+    pressJoy1X: function (direction) {
+        _native.pressJoyX1(direction)
+    },
+    pressJoy1Y: function (direction) {
+        _native.pressJoyY1(direction)
     },
     resume: function()
     {

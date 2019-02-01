@@ -7,6 +7,7 @@
 #include "Breakpoints.h"
 
 #include <Project64-core/GameMods.h>
+#include <Project64-core/Mods/MenuControls.h>
 
 //Added By Alex:
 #include <stdio.h>  /* defines FILENAME_MAX */
@@ -1521,6 +1522,64 @@ duk_ret_t CScriptInstance::js_Sleep(duk_context* ctx)
 
 	Sleep(duk_get_int(ctx, 0));
 	return 1;
+}
+
+
+duk_ret_t CScriptInstance::js_PressJoyX1(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 1)
+	{
+		GameMods_PressJoy1X(0);
+		return 1;
+	}
+
+	GameMods_PressJoy1X(duk_get_int(ctx, 0));
+	return 1;
+
+	duk_pop_n(ctx, nargs);
+}
+
+duk_ret_t CScriptInstance::js_PressJoyY1(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 1)
+	{
+		GameMods_PressJoy1Y(0);
+		return 1;
+	}
+
+	GameMods_PressJoy1Y(duk_get_int(ctx, 0));
+	return 1;
+
+	duk_pop_n(ctx, nargs);
+}
+
+
+duk_ret_t CScriptInstance::js_GetKey(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 1)
+	{
+		duk_push_false(ctx);
+		return 1;
+	}
+
+	int keyNum = duk_get_int(ctx, 0);
+
+
+	duk_pop_n(ctx, nargs);
+
+	bool result = GameMods_GetKeyInput(keyNum);
+
+	duk_push_boolean(ctx, result);
+	//duk_push_int(ctx, GameMods_CheckInput(padNum));
+
+	return 1;
+
 }
 
 duk_ret_t CScriptInstance::js_GetInput(duk_context* ctx)

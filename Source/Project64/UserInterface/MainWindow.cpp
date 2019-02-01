@@ -14,6 +14,7 @@
 #include <commctrl.h>
 #include <Project64-core/Settings/SettingType/SettingsType-Application.h>
 #include <Project64-core/GameMods.h>
+#include <Project64-core/Mods/MenuControls.h>
 
 void EnterLogOptions(HWND hwndOwner);
 
@@ -846,12 +847,13 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
                 }
             }
 
+			GameMods_SetKeyInput(wParam, false);
 			switch (wParam)
 			{
+
+
 			case VK_ESCAPE:
 				GameMods_PressInputButton(0, 4, false);
-
-
 				break;
 			}
         }
@@ -870,10 +872,13 @@ LRESULT CALLBACK CMainGui::MainGui_Proc(HWND hWnd, DWORD uMsg, DWORD wParam, DWO
                     }
                 }
             }
-
+			GameMods_SetKeyInput(wParam, true);
 			// Added by Alex:
 			switch (wParam)
 			{
+
+
+
 			case VK_ESCAPE:
 				GameMods_PressInputButton(0, 4, true);
 				

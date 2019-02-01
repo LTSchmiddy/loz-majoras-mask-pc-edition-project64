@@ -2136,7 +2136,8 @@ void CN64System::RefreshScreen()
 		for (int Control = 0; Control < 4; Control++)
 		{
 			g_Plugins->Control()->GetKeys(Control, &Keys);
-			m_Buttons[Control] = Keys.Value;
+			//m_Buttons[Control] = Keys.Value;
+			memcpy(&m_Buttons[Control], &Keys.Value, sizeof(uint32_t));
 		}
 	}
 

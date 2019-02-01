@@ -18,6 +18,7 @@
 #include "stdafx.h"
 #include "GameMods.h"
 #include "Mods\JSMods.h"
+#include "Mods\MenuControls.h"
 
 
 // Global Variables:
@@ -47,6 +48,9 @@ int InitCountdown = 10;
 
 bool StartSpammer = true;
 bool readyToSpoof = false;
+
+int XSpoof1 = 0;
+int YSpoof1 = 0;
 
 //Misc Functions:
 
@@ -100,7 +104,7 @@ bool GameMods_CheckInputSpoof(int inputNum, int pos) {
 
 void GameMods_PressInputButton(int inputNum, int pos, bool pressed) {
 
-
+	//setHealth(0x30);
 
 	uint32_t val = 0;
 
@@ -145,6 +149,13 @@ void GameMods_PressInputButton(int inputNum, int pos, bool pressed) {
 	}
 }
 
+void GameMods_PressJoy1X(int pos) { 
+	XSpoof1 = pos;
+}
+
+void GameMods_PressJoy1Y(int pos) {
+	YSpoof1 = pos;
+}
 
 uint32_t GameMods_CheckInput(int inputNum) {
 
@@ -275,36 +286,38 @@ void GameMods_DoReadController(int32_t Control, uint8_t * Command) {
 
 
 	if (Command[2] == GM_RD_READKEYS) {
-		//if (checkBit(Command[3], 4)) {
 
 
+		//if (Control == 0) {
+		//	memcpy(&GameMods_Controller1, &Command[3], sizeof(uint32_t));
 		//}
-
-		//Command[3] = 0;
-		//Command[4] = 0;
-		//Command[5] = 0;
-		//Command[6] = 0;
-
+		//else if (Control == 1) {
+		//	memcpy(&GameMods_Controller2, &Command[3], sizeof(uint32_t));
+		//}
+		//else if (Control == 2) {
+		//	memcpy(&GameMods_Controller3, &Command[3], sizeof(uint32_t));
+		//}
+		//else if (Control == 3) {
+		//	memcpy(&GameMods_Controller4, &Command[3], sizeof(uint32_t));
+		//}
+		
 		const uint32_t buttons = GameMods_DoRCInputSpoofing(Control, Command);
-		//uint32_t buttons = 0;
-
-		//memcpy(&Command[3], &buttons, sizeof(uint32_t));
-		//if (!StartSpammer) {
-		//	buttons = 0;
-		//	memcpy(&Command[3], &buttons, sizeof(uint8_t));
-		//	
-		//}
-		//else {
-		//	buttons = 0b00001000;
-		//	memcpy(&Command[3], &buttons, sizeof(uint8_t));
-		//	//Command[3] = 0b00001000;
-		//}
-
-		//StartSpammer = !StartSpammer;
-
-
 
 		memcpy(&Command[3], &buttons, sizeof(uint32_t));
+
+		if (XSpoof1 > 0) {
+			Command[5] = 0x7f;
+		}
+		else if (XSpoof1 < 0) {
+			Command[5] = 0x81;
+		}
+
+		if (YSpoof1 > 0) {
+			Command[6] = 0x7f;
+		}
+		else if (YSpoof1 < 0) {
+			Command[6] = 0x81;
+		}
 
 
 	}
@@ -351,16 +364,6 @@ void GameMods_MainLoop(CCheats& CheatModule, uint32_t Ctrl1, uint32_t Ctrl2, uin
 
 
 
-	// Input Spoofing Main Loop:
-	//if (GameMods_CheckInputButton(0, 0)) {
-	//	GameMods_PressInputButton(0, 4, true);
-	//	setHealth(0x30);
-	//}
-	//else {
-	//	GameMods_PressInputButton(0, 4, false);
-	//}
-
-
 
 	if (GameMods_UseJSMods) {
 		GM_JSMods_OnUpdate();
@@ -370,8 +373,8 @@ void GameMods_MainLoop(CCheats& CheatModule, uint32_t Ctrl1, uint32_t Ctrl2, uin
 
 
 void GameMods_OnEnd() {
-	GameMods_MainWindow->SetWindowMenu(GameMods_MainMenu);
-	GameMods_MainWindow->ShowStatusBar(true);
+	//GameMods_MainWindow->SetWindowMenu(GameMods_MainMenu);
+	//GameMods_MainWindow->ShowStatusBar(true);
 	if (GameMods_UseJSMods) {
 		GM_JSMods_OnEnd();
 	}

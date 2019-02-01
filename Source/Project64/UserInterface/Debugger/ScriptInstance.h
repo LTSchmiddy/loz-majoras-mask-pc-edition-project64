@@ -177,9 +177,12 @@ private:
     static duk_ret_t js_BreakHere(duk_context*);
     static duk_ret_t js_Pause(duk_context*); // () ; pauses emulation
     static duk_ret_t js_Sleep(duk_context*); // (sleepTime) ; pauses emulation
+    static duk_ret_t js_PressJoyX1(duk_context*); // (sleepTime) ; pauses emulation
+    static duk_ret_t js_PressJoyY1(duk_context*); // (sleepTime) ; pauses emulation
     static duk_ret_t js_GetInput(duk_context*); // (padNum, button) ; pauses emulation
     static duk_ret_t js_GetInputBits(duk_context*); // (padNum, button) ; pauses emulation
     static duk_ret_t js_PressInput(duk_context*); // (padNum, button) ; pauses emulation
+    static duk_ret_t js_GetKey(duk_context*); // (padNum, button) ; pauses emulation
     static duk_ret_t js_ShowCommands(duk_context*); // ([address]) ; shows commands window
 
     static duk_ret_t js_ScreenPrint(duk_context*); // (x, y, text)
@@ -201,6 +204,9 @@ private:
 		{ "getinput",       js_GetInput,	   DUK_VARARGS },
 		{ "getinputbits",   js_GetInputBits,   DUK_VARARGS },
 		{ "pressinput",     js_PressInput,	   DUK_VARARGS },
+		{ "pressJoyY1",     js_PressJoyY1,	   DUK_VARARGS },
+		{ "pressJoyX1",     js_PressJoyX1,	   DUK_VARARGS },
+		{ "getkey",			js_GetKey,		   DUK_VARARGS },
         { "addCallback",    js_AddCallback,    DUK_VARARGS },
         { "removeCallback", js_RemoveCallback, DUK_VARARGS },
 

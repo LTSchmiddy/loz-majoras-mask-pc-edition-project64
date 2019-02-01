@@ -58,6 +58,11 @@ bool GameMods_CheckInputButton(int inputNum, int pos);
 void GameMods_PressInputButton(int inputNum, int pos, bool pressed);
 uint32_t GameMods_CheckInput(int inputNum);
 
+void GameMods_PressJoy1X(int pos);
+
+void GameMods_PressJoy1Y(int pos);
+
+
 void GameMods_OnStart();
 //void GameMods_OnStart(CCheats& CheatModule, uint32_t& Ctrl1, uint32_t& Ctrl2, uint32_t& Ctrl3, uint32_t& Ctrl4);
 
