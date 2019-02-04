@@ -577,6 +577,7 @@ void CN64System::StartEmulation2(bool NewThread)
 		{
 			WriteTrace(TraceN64System, TraceDebug, "Starting emulation thread");
 			GameMods_OnStart();
+			//GameMods_Recomp = m_Recomp;
 			StartEmulationThead();
 
 		}

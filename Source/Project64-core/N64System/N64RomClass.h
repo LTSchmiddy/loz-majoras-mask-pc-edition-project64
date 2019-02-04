@@ -28,6 +28,8 @@ public:
     void    ClearRomSettingID();
     CICChip CicChipID();
     uint8_t *  GetRomAddress() { return m_ROMImage; }
+	void       SetRomAddress8(uint32_t addr, uint8_t value);
+	void       SetRomAddress16(uint32_t addr, uint16_t value);
     uint32_t   GetRomSize() const { return m_RomFileSize; }
     stdstr  GetRomMD5() const { return m_MD5; }
     stdstr  GetRomName() const { return m_RomName; }

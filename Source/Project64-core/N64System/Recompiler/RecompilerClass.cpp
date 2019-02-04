@@ -107,6 +107,59 @@ void CRecompiler::Run()
     WriteTrace(TraceRecompiler, TraceDebug, "Done");
 }
 
+//
+//void CRecompiler::CallFunction() {
+//
+//	__except_try()
+//	{
+//		if (g_System->LookUpMode() == FuncFind_VirtualLookup)
+//		{
+//			if (g_System->bSMM_ValidFunc())
+//			{
+//				RecompilerMain_VirtualTable_validate();
+//			}
+//			else
+//			{
+//				RecompilerMain_VirtualTable();
+//			}
+//		}
+//		else if (g_System->LookUpMode() == FuncFind_ChangeMemory)
+//		{
+//			RecompilerMain_ChangeMemory();
+//		}
+//		else
+//		{
+//			if (g_System->bUseTlb())
+//			{
+//				if (g_System->bSMM_ValidFunc())
+//				{
+//					RecompilerMain_Lookup_validate_TLB();
+//				}
+//				else
+//				{
+//					RecompilerMain_Lookup_TLB();
+//				}
+//			}
+//			else
+//			{
+//				if (g_System->bSMM_ValidFunc())
+//				{
+//					RecompilerMain_Lookup_validate();
+//				}
+//				else
+//				{
+//					RecompilerMain_Lookup();
+//				}
+//			}
+//		}
+//	}
+//	__except_catch()
+//	{
+//		g_Notify->DisplayError(MSG_UNKNOWN_MEM_ACTION);
+//	}
+//
+//}
+
 void CRecompiler::RecompilerMain_VirtualTable()
 {
     bool & Done = m_EndEmulation;

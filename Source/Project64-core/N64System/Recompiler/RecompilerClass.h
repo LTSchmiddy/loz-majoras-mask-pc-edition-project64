@@ -47,6 +47,7 @@ public:
     ~CRecompiler();
 
     void Run();
+    //void CallFunction();
     void Reset();
     void ResetRecompCode(bool bAllocate);
 
@@ -58,6 +59,8 @@ public:
     void ResetFunctionTimes();
     void DumpFunctionTimes();
 
+
+	CCompiledFuncList  m_Functions;
     uint32_t& MemoryStackPos() { return m_MemoryStack; }
 
 private:
@@ -84,7 +87,7 @@ private:
     void RecompilerMain_Lookup_validate();
     void RecompilerMain_Lookup_validate_TLB();
 
-    CCompiledFuncList  m_Functions;
+
     CMipsMemoryVM    & m_MMU;
     CRegisters       & m_Registers;
     bool             & m_EndEmulation;

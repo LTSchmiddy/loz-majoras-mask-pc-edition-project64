@@ -40,6 +40,8 @@
 extern bool GameMods_UseJSMods;
 extern CDebuggerUI * GameMods_DBUI;
 
+//extern CRecompiler * GameMods_Recomp;
+
 extern CMainGui * GameMods_MainWindow;
 extern CMainMenu * GameMods_MainMenu;
 
@@ -76,5 +78,6 @@ void GameMods_DoReadController(int32_t Control, uint8_t * Command);
 void GameMods_MainLoop(CCheats& CheatModule, uint32_t Ctrl1, uint32_t Ctrl2, uint32_t Ctrl3, uint32_t Ctrl4);
 //void GameMods_MainLoop(CCheats& CheatModule, uint32_t MyButtons[4]);
 
+void GameMods_CallFunction(uint32_t funcAddr);
 
 void GameMods_OnEnd();

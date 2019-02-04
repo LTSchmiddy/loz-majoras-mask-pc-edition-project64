@@ -1558,6 +1558,46 @@ duk_ret_t CScriptInstance::js_PressJoyY1(duk_context* ctx)
 }
 
 
+duk_ret_t CScriptInstance::js_SaveState(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	//if (nargs < 1)
+	//{
+	//	//return 1;
+	//}
+
+	//int keyNum = duk_get_int(ctx, 0);
+
+
+	duk_pop_n(ctx, nargs);
+
+	duk_push_boolean(ctx, g_BaseSystem->SaveState());
+
+	return 1;
+
+}
+
+duk_ret_t CScriptInstance::js_LoadState(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	//if (nargs < 1)
+	//{
+	//	//return 1;
+	//}
+
+	//int keyNum = duk_get_int(ctx, 0);
+
+
+	duk_pop_n(ctx, nargs);
+
+	duk_push_boolean(ctx, g_BaseSystem->LoadState());
+
+	return 1;
+
+}
+
 duk_ret_t CScriptInstance::js_GetKey(duk_context* ctx)
 {
 	int nargs = duk_get_top(ctx);
@@ -1581,6 +1621,77 @@ duk_ret_t CScriptInstance::js_GetKey(duk_context* ctx)
 	return 1;
 
 }
+//duk_ret_t CScriptInstance::js_CallRomFunc(duk_context* ctx)
+//{
+//	int nargs = duk_get_top(ctx);
+//
+//	if (nargs < 1)
+//	{
+//		//duk_push_false(ctx);
+//		return 1;
+//	}
+//
+//	int addr = duk_get_int(ctx, 0);
+//
+//
+//	duk_pop_n(ctx, nargs);
+//
+//	GameMods_CallFunction(addr);
+//
+//	//duk_push_int(ctx, GameMods_CheckInput(padNum));
+//
+//	return 1;
+//
+//}
+
+duk_ret_t CScriptInstance::js_getRomAddress8(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 1)
+	{
+		duk_push_int(ctx, -1);
+		return 1;
+	}
+
+	uint32_t addr = duk_get_int(ctx, 0);
+
+
+	duk_pop_n(ctx, nargs);
+
+	uint8_t result = g_Rom->GetRomAddress()[addr];
+
+	duk_push_int(ctx, result);
+	//duk_push_int(ctx, GameMods_CheckInput(padNum));
+
+	return 1;
+
+}
+
+duk_ret_t CScriptInstance::js_setRomAddress8(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 2)
+	{
+		//duk_push_false(ctx);
+		return 1;
+	}
+
+	uint32_t addr = duk_get_int(ctx, 0);
+	uint8_t value = duk_get_int(ctx, 1);
+
+	duk_pop_n(ctx, nargs);
+
+	g_Rom->SetRomAddress8(addr, value);
+
+	//duk_push_boolean(ctx, result);
+	//duk_push_int(ctx, GameMods_CheckInput(padNum));
+
+	return 1;
+
+}
+
 
 duk_ret_t CScriptInstance::js_GetInput(duk_context* ctx)
 {

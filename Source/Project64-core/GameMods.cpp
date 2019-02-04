@@ -27,6 +27,8 @@
 bool GameMods_UseJSMods = true;
 CDebuggerUI * GameMods_DBUI = NULL;
 
+//CRecompiler * GameMods_Recomp = NULL;
+
 CMainGui * GameMods_MainWindow = NULL;
 CMainMenu * GameMods_MainMenu = NULL;
 
@@ -78,6 +80,7 @@ bool GameMods_CheckInputButton(int inputNum, int pos) {
 	} else if (inputNum == 3) {
 		val = GameMods_Controller4;
 	} 
+
 
 	return 0x00000000000000000000000000000000 != (val & (0x01 << pos));
 }
@@ -371,6 +374,15 @@ void GameMods_MainLoop(CCheats& CheatModule, uint32_t Ctrl1, uint32_t Ctrl2, uin
 	
 }
 
+//void GameMods_CallFunction(uint32_t funcAddr) {
+//
+//	CCompiledFunc * info = g_Recompiler->m_Functions[funcAddr];
+//	if (info != NULL) {
+//		(info->Function())();
+//
+//	}
+//
+//}
 
 void GameMods_OnEnd() {
 	//GameMods_MainWindow->SetWindowMenu(GameMods_MainMenu);

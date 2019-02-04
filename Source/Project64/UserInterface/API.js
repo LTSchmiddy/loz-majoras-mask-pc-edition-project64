@@ -261,6 +261,14 @@ const system = {
     getinput: function (padNum, button) {
         return _native.getinput(padNum, button)
     },
+    
+    getRomAddress8: function (addr) {
+        return _native.getRomAddress8(addr)
+    },
+    
+    setRomAddress8: function (addr, value) {
+        return _native.setRomAddress8(addr, value)
+    },
     getinputbits: function(padNum, button)
     {
         return _native.getinputbits(padNum, button)
@@ -288,13 +296,17 @@ const system = {
     {
 
     },
+    //callRomFunc: function (addr) {
+    //    _native.callRomFunc(addr);
+
+    //},
     savestate: function()
     {
-
+        _native.savestate();
     },
     loadstate: function()
     {
-
+        _native.loadstate();
     },
     setsaveslot: function(slot)
     {

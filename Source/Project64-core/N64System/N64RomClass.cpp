@@ -56,6 +56,9 @@ bool CN64Rom::AllocateRomImage(uint32_t RomFileSize)
     return true;
 }
 
+
+
+// Open and Read ROM:
 bool CN64Rom::AllocateAndLoadN64Image(const char * FileLoc, bool LoadBootCodeOnly)
 {
     WriteTrace(TraceN64System, TraceDebug, "Trying to open %s", FileLoc);
@@ -313,6 +316,28 @@ void CN64Rom::CalculateCicChip()
             g_Notify->DisplayError(stdstr_f("Unknown CIC checksum:\n%I64X.", CRC).c_str());
         }
     }
+}
+
+void CN64Rom::SetRomAddress8(uint32_t addr, uint8_t value)
+{
+	ProtectMemory(m_ROMImage, m_RomFileSize, MEM_READWRITE);
+
+	memcpy(&m_ROMImage[addr], &value, sizeof(uint8_t));
+
+	//m_ROMImage[addr] = value;
+
+	ProtectMemory(m_ROMImage, m_RomFileSize, MEM_READONLY);
+}
+
+void CN64Rom::SetRomAddress16(uint32_t addr, uint16_t value)
+{
+	ProtectMemory(m_ROMImage, m_RomFileSize, MEM_READWRITE);
+
+	memcpy(&m_ROMImage[addr], &value, sizeof(uint16_t));
+
+	//m_ROMImage[addr] = value;
+
+	ProtectMemory(m_ROMImage, m_RomFileSize, MEM_READONLY);
 }
 
 void CN64Rom::CalculateRomCrc()
