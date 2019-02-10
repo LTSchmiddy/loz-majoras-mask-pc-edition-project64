@@ -1524,6 +1524,13 @@ duk_ret_t CScriptInstance::js_Sleep(duk_context* ctx)
 	return 1;
 }
 
+duk_ret_t CScriptInstance::js_ExitApp(duk_context* ctx)
+{
+
+	DestroyWindow((HWND)GameMods_MainWindow->GetWindowHandle());
+	return 1;
+}
+
 
 duk_ret_t CScriptInstance::js_PressJoyX1(duk_context* ctx)
 {
@@ -1593,6 +1600,46 @@ duk_ret_t CScriptInstance::js_LoadState(duk_context* ctx)
 	duk_pop_n(ctx, nargs);
 
 	duk_push_boolean(ctx, g_BaseSystem->LoadState());
+
+	return 1;
+
+}
+
+duk_ret_t CScriptInstance::js_ResetGame(duk_context* ctx)
+{
+	int nargs = duk_get_top(ctx);
+
+	if (nargs < 1)
+	{
+		// Hard reset by default:
+		g_BaseSystem->Reset(true, true);
+		//duk_pop_n(ctx, nargs);
+		return 1;
+	}
+
+	if (nargs < 2)
+	{
+		// ... HEY! Get your mind out of the gutter!
+		bool isHard = duk_get_boolean(ctx, 0);
+
+		if (isHard) {
+			g_BaseSystem->Reset(true, true);
+		}
+		else {
+			g_BaseSystem->GameReset();
+		}
+		duk_pop_n(ctx, nargs);
+		return 1;
+	}
+
+	bool InitRegArg = duk_get_boolean(ctx, 0);
+	bool ClearMemArg = duk_get_boolean(ctx, 1);
+
+	duk_pop_n(ctx, nargs);
+
+	g_BaseSystem->Reset(InitRegArg, ClearMemArg);
+
+	//duk_push_boolean(ctx, g_BaseSystem->LoadState());
 
 	return 1;
 

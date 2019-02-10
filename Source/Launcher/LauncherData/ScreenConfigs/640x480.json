@@ -1,0 +1,27 @@
+{
+    "Screen Resolution": [800, 480],
+    "Panel Settings":{
+        
+        "MainMenu":{
+            "res":[460, 440],
+            "pos":[320, 20],
+            "alpha": 200
+        },
+        "SettingsMenu":{
+            "res":[460, 440],
+            "pos":[320, 20],
+            "alpha": 200
+        },
+        "ModsMenu":{
+            "res":[460, 440],
+            "pos":[320, 20],
+            "alpha": 200
+        },
+
+        "Background":{
+            "res":[800, 480],
+            "pos":[0, 0]
+
+        }
+    }
+}

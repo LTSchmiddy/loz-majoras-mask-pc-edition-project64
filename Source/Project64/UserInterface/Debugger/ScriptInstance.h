@@ -175,8 +175,11 @@ private:
     static duk_ret_t js_ConsoleClear(duk_context*);
 
     static duk_ret_t js_BreakHere(duk_context*);
+
+	// Added By Alex
     static duk_ret_t js_Pause(duk_context*); // () ; pauses emulation
     static duk_ret_t js_Sleep(duk_context*); // (sleepTime) ; pauses emulation
+    static duk_ret_t js_ExitApp(duk_context*); // (sleepTime) ; pauses emulation
     static duk_ret_t js_PressJoyX1(duk_context*); // (sleepTime) ; pauses emulation
     static duk_ret_t js_PressJoyY1(duk_context*); // (sleepTime) ; pauses emulation
     static duk_ret_t js_getRomAddress8(duk_context*); // (padNum, button) ; pauses emulation
@@ -188,6 +191,9 @@ private:
     //static duk_ret_t js_CallRomFunc(duk_context*); // (padNum, button) ; pauses emulation
     static duk_ret_t js_SaveState(duk_context*); // (padNum, button) ; pauses emulation
     static duk_ret_t js_LoadState(duk_context*); // (padNum, button) ; pauses emulation
+    static duk_ret_t js_ResetGame(duk_context*); // (padNum, button) ; pauses emulation
+
+
     static duk_ret_t js_ShowCommands(duk_context*); // ([address]) ; shows commands window
 
     static duk_ret_t js_ScreenPrint(duk_context*); // (x, y, text)
@@ -214,11 +220,12 @@ private:
 		{ "pressJoyY1",     js_PressJoyY1,	   DUK_VARARGS },
 		{ "pressJoyX1",     js_PressJoyX1,	   DUK_VARARGS },
 		{ "getkey",			js_GetKey,		   DUK_VARARGS },
-		//{ "callRomFunc",	js_CallRomFunc,		   DUK_VARARGS },
+		{ "resetgame",		js_ResetGame,	   DUK_VARARGS },
 		{ "savestate",		js_SaveState,	   DUK_VARARGS },
 		{ "loadstate",		js_LoadState,	   DUK_VARARGS },
         { "addCallback",    js_AddCallback,    DUK_VARARGS },
         { "removeCallback", js_RemoveCallback, DUK_VARARGS },
+		//{ "callRomFunc",	js_CallRomFunc,		   DUK_VARARGS },
 
         { "setPCVal",       js_SetPCVal,       DUK_VARARGS },
         { "getPCVal",       js_GetPCVal,       DUK_VARARGS },
@@ -255,6 +262,7 @@ private:
         { "consoleClear",   js_ConsoleClear,   DUK_VARARGS },
         { "pause",          js_Pause,          DUK_VARARGS },
         { "sleep",          js_Sleep,          DUK_VARARGS },
+        { "exitapp",        js_ExitApp,        DUK_VARARGS },
         { "showCommands",   js_ShowCommands,   DUK_VARARGS },
 
         { "breakHere",      js_BreakHere,      DUK_VARARGS },

@@ -290,11 +290,14 @@ const system = {
     },
     reset: function()
     {
-
+        _native.resetgame(false)
     },
     hardreset: function()
     {
-
+        _native.resetgame(true)
+    },
+    exitapp: function () {
+        _native.exitapp()
     },
     //callRomFunc: function (addr) {
     //    _native.callRomFunc(addr);

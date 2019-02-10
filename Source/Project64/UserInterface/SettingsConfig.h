@@ -5,6 +5,10 @@
 #define DEFAULT_ROM_PATH_ARG "./ROMFile/main.n64"
 #define SHOW_GUI_ARG "showgui"
 #define NO_MAIN_JS_ARG "debugjs"
+#define SHOW_EMUSETTINGS_ARG "emusettings"
+#define SHOW_GFXSETTINGS_ARG "gfxsettings"
+#define SHOW_AUDIOSETTINGS_ARG "audiosettings"
+#define SHOW_CONTROLSETTINGS_ARG "controlsettings"
 
 class CConfigSettingSection;
 class CSettingsPage;

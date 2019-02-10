@@ -249,6 +249,26 @@ void CMainMenu::OnSettings(HWND hWnd)
 
 bool CMainMenu::ProcessMessage(HWND hWnd, DWORD /*FromAccelerator*/, DWORD MenuID)
 {
+	msghWnd = & hWnd;
+
+	//if (ForceSettingsDisplay == 1) {
+	//	OnSettings(hWnd);
+	//}
+	//else if (ForceSettingsDisplay == 2) {
+	//	WriteTrace(TraceUserInterface, TraceDebug, "ID_OPTIONS_CONFIG_GFX");
+	//	g_Plugins->ConfigPlugin(hWnd, PLUGIN_TYPE_GFX);
+	//}
+	//else if (ForceSettingsDisplay == 3) {
+	//	WriteTrace(TraceUserInterface, TraceDebug, "ID_OPTIONS_CONFIG_AUDIO");
+	//	g_Plugins->ConfigPlugin(hWnd, PLUGIN_TYPE_AUDIO);
+	//}
+	//else if (ForceSettingsDisplay == 4) {
+	//	WriteTrace(TraceUserInterface, TraceDebug, "ID_OPTIONS_CONFIG_CONT");
+	//	g_Plugins->ConfigPlugin(hWnd, PLUGIN_TYPE_CONTROLLER);
+	//}
+
+	//ForceSettingsDisplay = 0;
+
     switch (MenuID)
     {
     case ID_FILE_OPEN_ROM: OnOpenRom(hWnd); break;

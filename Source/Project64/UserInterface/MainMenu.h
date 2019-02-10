@@ -69,6 +69,12 @@ public:
     void      ResetMenu(void);
     void      ResetAccelerators(void) { m_ResetAccelerators = true; }
 
+	//int ForceSettingsDisplay = 0;
+
+	void OnSettings(HWND hWnd);
+	HWND * msghWnd;
+
+
 private:
     CMainMenu();								// Disable default constructor
     CMainMenu(const CMainMenu&);				// Disable copy constructor
@@ -81,7 +87,7 @@ private:
     void OnSaveAs(HWND hWnd);
     void OnLodState(HWND hWnd);
     void OnCheats(HWND hWnd);
-    void OnSettings(HWND hWnd);
+
 
     void FillOutMenu(HMENU hMenu);
     std::wstring GetSaveSlotString(int Slot);

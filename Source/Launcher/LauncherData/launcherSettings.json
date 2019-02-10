@@ -1,0 +1,40 @@
+{
+    "Controls": {
+
+    },
+    "Audio":{
+        "Use Game Music": true,
+        "Number of Audio Channels": 16
+    },
+
+    "Game":{
+        "UseScalingBarWidths": false,
+        "Use Launcher": false,
+        "Local Texture Path": "../../Bin/Release/Plugin/Zilmar-specs/hires_texture",
+        "Game Exec": "../../Bin/Release/LOZ-MM v0.1.exe",
+        "Game Working Dir": "../../Bin/Release",
+        "Close Launcher On Start": true
+    },
+    "Display": {
+        "DisplayFile": "640x480",
+        "DispFileOptions": [
+            "1920x1080",
+            "1280x720",
+            "640x480"
+
+        ],
+        "Frames Per Second": 60,
+        "Use Frame Stabilizing": true,
+        "Fullscreen": true
+
+
+
+
+    },
+
+    "Editor": {
+        "isActive": true,
+        "isServerActive": false
+    }
+    
+}

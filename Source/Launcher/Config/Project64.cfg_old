@@ -1,0 +1,42 @@
+[Plugin]
+Audio Dll Ver=Project64 Audio Plugin: 1.0.1.844-g25bd63cc-dirty
+Controller Dll Ver=N-Rage For PJ64: 2.5.3.844-g25bd63cc-dirty
+Graphics Dll=Zilmar-specs\GLideN64.dll
+Graphics Dll Ver=GLideN64 Public Release 2.0
+RSP Dll Ver=RSP Plugin 1.7.4.844-g25bd63cc-dirty
+
+[Recent File]
+Recent Rom 0=./ROMFile/main.n64
+Recent Rom 1=D:\Project Z\Projects\Majora's Mask - PC Edition\LOZ-P64\project64\Bin\Release\ROMFile\main.n64
+Recent Rom 2=D:\Project Z\Projects\Majora's Mask - PC Edition\LOZ-P64\project64\Bin\Release\ROMFile\main - Better RSword.n64
+Recent Rom 3=D:\Project Z\Projects\Majora's Mask - PC Edition\LOZ-P64\project64\Bin\Release\ROMFile\main - Vanilla.n64
+
+[5354631C-03A2DEF0-C:45]
+Cheat0=1
+Good Name=ZELDA MAJORA'S MASK
+
+[Main Window]
+Left=339
+Top=100
+
+[Settings]
+Auto Sleep=0
+Basic Mode=0
+
+[Debugger]
+Debugger=1
+Enable CPU Logging=1
+
+[Debugger UI]
+Commands Pos=1072,155,750,570
+Exception BP Pos=1068,172,326,203
+Memory Pos=1133,424,659,387
+Scripts Pos=1013,191,922,315
+Stack Pos=1438,89,312,384
+
+[Rom Browser]
+Left=64
+Top=59
+
+[Defaults]
+RDRAM Size=8388608

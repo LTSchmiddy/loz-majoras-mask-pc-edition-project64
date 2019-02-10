@@ -1,0 +1,1 @@
+python -m PyInstaller --onefile --noconsole --icon="PJ64.ico" Disp_Host.py

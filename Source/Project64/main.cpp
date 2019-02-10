@@ -24,7 +24,7 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 		// Added By Alex
 		GameMods_DBUI = &Debugger;
 
-		//GameMods_MainWindow = &MainWindow;
+		GameMods_MainWindow = &MainWindow;
 		//GameMods_MainMenu = &MainMenu;
 
         g_Plugins->SetRenderWindows(&MainWindow, &HiddenWindow);
@@ -35,6 +35,7 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 		//Added by Alex:
 
 		bool LoadRomNow = true;
+		int ShowSettingsChoice = 0;
 		string romPath = g_Settings->LoadStringVal(Cmd_RomFile);
 
 		if (romPath.length() <= 0) {
@@ -49,6 +50,27 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 			LoadRomNow = false;
 			GameMods_UseJSMods = false;
 		}
+		else if (romPath.compare(SHOW_EMUSETTINGS_ARG) == 0) {
+			LoadRomNow = false;
+			ShowSettingsChoice = 1;
+			GameMods_UseJSMods = false;
+		}
+		else if (romPath.compare(SHOW_GFXSETTINGS_ARG) == 0) {
+			LoadRomNow = false;
+			ShowSettingsChoice = 2;
+			GameMods_UseJSMods = false;
+		}
+		else if (romPath.compare(SHOW_AUDIOSETTINGS_ARG) == 0) {
+			LoadRomNow = false;
+			ShowSettingsChoice = 3;
+			GameMods_UseJSMods = false;
+		}
+		else if (romPath.compare(SHOW_CONTROLSETTINGS_ARG) == 0) {
+			LoadRomNow = false;
+			ShowSettingsChoice = 4;
+			GameMods_UseJSMods = false;
+		}
+
 
         if (LoadRomNow)
         //if (romPath.length() > 0)
@@ -83,7 +105,7 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
         else
         {
             //SupportWindow.Show(reinterpret_cast<HWND>(MainWindow.GetWindowHandle()));
-            if (UISettingsLoadBool(RomBrowser_Enabled))
+            if (UISettingsLoadBool(RomBrowser_Enabled) && ShowSettingsChoice == 0)
             {
                 WriteTrace(TraceUserInterface, TraceDebug, "Show Rom Browser");
                 //Display the rom browser
@@ -94,14 +116,39 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
             else
             {
                 WriteTrace(TraceUserInterface, TraceDebug, "Show Main Window");
-                MainWindow.Show(true);	//Show the main window
+				if (ShowSettingsChoice == 0) {
+					MainWindow.Show(true);	//Show the main window
+				}
+
             }
         }
+		//MainWindow.BringToTop();
+		//MainWindow.MakeWindowOnTop(true);
 
-        //Process Messages till program is closed
-        WriteTrace(TraceUserInterface, TraceDebug, "Entering Message Loop");
-        MainWindow.ProcessAllMessages();
-        WriteTrace(TraceUserInterface, TraceDebug, "Message Loop Finished");
+		if (ShowSettingsChoice == 1) {
+			MainMenu.OnSettings((HWND)MainWindow.GetWindowHandle());
+		}
+		else if (ShowSettingsChoice == 2) {
+
+			g_Plugins->ConfigPlugin((HWND)MainWindow.GetWindowHandle(), PLUGIN_TYPE_GFX);
+		}
+		else if (ShowSettingsChoice == 3) {
+
+			g_Plugins->ConfigPlugin((HWND)MainWindow.GetWindowHandle(), PLUGIN_TYPE_AUDIO);
+		}
+		else if (ShowSettingsChoice == 4) {
+
+			g_Plugins->ConfigPlugin((HWND)MainWindow.GetWindowHandle(), PLUGIN_TYPE_CONTROLLER);
+		}
+
+		//ShowSettingsChoice = 0;
+		
+		else {
+			//Process Messages till program is closed
+			WriteTrace(TraceUserInterface, TraceDebug, "Entering Message Loop");
+			MainWindow.ProcessAllMessages();
+			WriteTrace(TraceUserInterface, TraceDebug, "Message Loop Finished");
+		}
 
         if (g_BaseSystem)
         {
