@@ -2,7 +2,7 @@
 
 (Note, this readme is still under construction, and I'm still in the process of organizing and uploading the project, and packaging a release. Stay tuned!)
 
-This project is a customized build of Project64 v2.4, specially designed for running The Legend of Zelda: Majora's Mask. My goal is to create a gamepley experience that feels native (or as close tpo it as possible) to PCs.
+This project is a customized build of Project64 v2.4, specially designed for running The Legend of Zelda: Majora's Mask. My goal is to create a gamepley experience that feels native (or as close to it as possible) to PCs.
 
 This project also includes some (entirely optional) tweaks and minor improvements to the original game, including better textures, Hotkeys for a Ocarina of Time and the transformation masks, magic regeneration, and bigger wallets and ammo bags. All of these mods are written with a JavaScript API, so users can easily tweak/change them to suit their desires, or even to implement their own mods.
 
