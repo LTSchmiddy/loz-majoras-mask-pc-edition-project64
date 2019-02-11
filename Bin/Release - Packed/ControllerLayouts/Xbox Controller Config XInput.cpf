@@ -1,0 +1,33 @@
+@Controller Profile 2.2
+
+Plugged=1
+xInput=1
+N64Mouse=0
+RawData=1
+PakType=2
+RealN64Range=1
+RapidFireEnabled=0
+RapidFireRate=3
+StickRange=100
+MouseMoveX=0
+MouseMoveY=0
+AxisSet=0
+KeyAbsoluteX=0
+KeyAbsoluteY=0
+PadDeadZone=5
+MouseSensitivityX=100
+MouseSensitivityY=100
+RumbleType=1
+RumbleStrength=80
+VisualRumble=0
+FFDeviceName=
+FFDeviceNr=0
+MemPakFile=Mempak1.mpk
+GBRomFile=
+GBRomSave=
+DInputName=SysMouse
+DInputNr=0
+Button=0 18 00 0 7
+Button=0 19 00 1 7
+Button=0 20 01 1 7
+Button=0 21 01 0 7

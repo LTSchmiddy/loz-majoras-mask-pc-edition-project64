@@ -1,0 +1,127 @@
+var Input = require("../common/Input");
+
+var Link = require("../common/Link").Link;
+var Game = require("../common/Game").Game;
+var ButtonMap = require("../common/ButtonMap").ButtonMap;
+var ItemIndex = require("../common/ItemIndex").ItemIndex;
+var GlobalMem = require("../common/GlobalMem").GlobalMem;
+
+var ModMain = (function () {
+
+    function ModMain() {
+
+        //Do = 
+        //Change to = 20759
+    }
+
+    ModMain.prototype.Init = function (mem, u8, u16, u32) {
+        this.IsActive = true;
+        
+        
+        this.QuickSaveBytes = 42;
+        // this.PostQSBytes = 32;
+        
+        mem.bindvar(this, 0x803FD34D , 'ShouldQuickSave', u8); 
+        this.LastFrameSQSBytes = 0x00;
+        
+        
+        this.DidQuickSave = false;
+        
+        
+        this.iterVal = -1;
+
+    };
+    
+
+    ModMain.prototype.Run = function ()  {
+        if (!this.IsActive) {
+            return;
+        }
+        
+        // console.log(this.ShouldQuickSave);
+        if (!this.DidQuickSave){
+
+        
+            if (this.ShouldQuickSave == this.QuickSaveBytes) { 
+                // this.ShouldQuickSave = this.PostQSBytes;
+                
+                
+                console.log("Should Quick Save Now....");
+
+                this.iterVal = 0;
+                this.DidQuickSave = true;
+            }
+            
+            
+        } else {
+
+            
+            if (this.ShouldQuickSave != this.LastFrameSQSBytes) {
+                console.log("Resuming QS Scan...");
+                this.DidQuickSave = false;
+            }
+            
+        }
+
+        this.dialogPassthroughIterator();
+        
+        
+        this.LastFrameSQSBytes = this.ShouldQuickSave;
+
+    };
+    
+    
+    // ModMain.prototype.dialogPassthroughIterator = function () { 
+    
+        // if (this.iterVal < 0) {
+            // return;
+            
+        // }
+        
+        // if (system.getinput(1, ButtonMap.A_BUTTON.id)) {
+            // this.iterVal = -1;
+            // system.pressinput(1, ButtonMap.A_BUTTON.id, false);
+        // }
+        
+        // switch (this.iterVal) {
+            // case 0:
+            
+
+                // break;
+            
+            // case 30:
+                // system.savestate();
+                // break;
+            
+            // case 60:
+                // system.pressinput(1, ButtonMap.A_BUTTON.id, true);
+                // break;
+                
+            // case 65:
+                // system.pressinput(1, ButtonMap.A_BUTTON.id, false);
+                // break;
+            
+            
+            // case 70:
+                // this.iterVal = -1;
+                // break;
+            
+            
+                           
+            // default:
+                // break;
+            
+        // }
+        
+        // if (this.iterVal >= 0) {
+            // this.iterVal += 1;
+            
+        // }
+        
+
+    };
+    
+    
+    return ModMain;
+})();
+exports.ModMain = ModMain;
