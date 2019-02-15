@@ -37,7 +37,7 @@ Admittedly, this was probably the trickiest one I've attempted so far. I decided
 
 This project is a customized build of Project64 v2.4, specially designed for running The Legend of Zelda: Majora's Mask. My goal is to create a gamepley experience that feels native (or as close to it as possible) to PCs.
 
-This project also includes some (entirely optional) tweaks and minor improvements to the original game, including better textures, Hotkeys for a Ocarina of Time and the transformation masks, magic regeneration, and bigger wallets and ammo bags. All of these mods are written with a JavaScript API, so users can easily tweak/change them to suit their desires, or even to implement their own mods.
+This project also includes some (entirely optional) tweaks and minor improvements to the original game, including better textures, hotkeys for the Ocarina of Time and the transformation masks, magic regeneration, and bigger wallets and ammo bags. All of these mods are written with a JavaScript API, so users can easily tweak/change them to suit their desires or even implement their own mods.
 
 It also features a custom ROM file that makes the Razor Sword a permenant upgrade to your sword, instead of reverting to the Kokiri Sword after 100 uses or playing the Song of Time (this doesn't make the Gilded Sword pointless, however, since the Gilded Sword still does more damage than the Razor Sword), and I've changed some of the dialog to match. However, if you don't like this, a vanilla version of the ROM is available as well.
 
@@ -46,7 +46,7 @@ It also features a custom ROM file that makes the Razor Sword a permenant upgrad
 
 So, exactly what does "The Legend of Zelda: Majora's Mask - PC Edition" have to offer?
 
-Each major feature listed below can be enabled or disabled in a special config file. More on that later.
+No config file yet. Working on that...
 
 ### a) ADDITIONAL CONTROLS:
 
@@ -56,37 +56,15 @@ I've added a number of additional controls to the game. This system works by hij
 
 Movement: WASD
 
-Action/Interact/Pegasus Boots: Space Bar
+Action/Interact/Roll: Space Bar
 
 Use Sword: J
 
-Use Secondary Item: K
 
-Previous Item: L (if using the redux ROM)
-
-Next Item: U (if using the redux ROM)
-
-Show/Hide Inventory Screen: Q
-
-Show/Hide Map Screen: Tab
-
-Show Save Menu: ` [Back-tick]
 
 **** New Controls ****
 
-Strafe: Left Shift
 
-Quick Boomerang: M
-
-Quick Bow: N
-
-Quick Hookshot: H
-
-Quick Bombs: L
-
-Quick Lantern: ; [Semi-Colon]
-
-Quick Hammer: E
 
 Menu - Navigate: Arrow Keys
 
@@ -98,62 +76,25 @@ Pause Game: Escape (Not in menus)
 
 ### b) IMPROVED MOVEMENT:
 
-Admittedly, because of ALTTP's simplistic movement controls, it can be VERY difficult to avoid taking damage from enemies because your shield is largely useless. It works when you're standing in the exact right spot, and if you turn away to adjust your position the shield is no longer between you and your enemy. Basically, it's very difficult to actually make use of.
+...
 
-To fix this, I've added a strafe button (Left Shift by default) to the emulator. While holding it, Link will continue to face the same direction regardless of what direction you move in. This way, you can more easily position yourself so that your shield in between you and that incoming enemy or projectile.
+### c) MAGIC REGENERATION:
 
-Additionally, I've made the it so there is no wind-up time for running with the Pegesus Boots. In all of the later titles in the series, Link has his incredibly handy dive-roll to help him quickly manuver away from enemy attacks in a pinch. By removing the wind-up time on the Pegesus Boots, they can be used in a similar manner.
-
-### c) HEALTH/MAGIC REGENERATION:
-
-I know some people may not like this next feature, so let me remind you that it is EASILY disabled if you wish.
-
-On top of the game's awkward combat, recovering health and magic is a huge pain as well. In dungeons, pots don't respawn unless you die, whereas later games would respawn them after you left the room. On top of that, ALTTP is incredibly stingy about giving out health pickups in the first place, and each heart is worth half the health they are worth in later games. In short, back-tracking and grinding to replenish your health is often a near impossible task that produces meager results. I often found myself save-scumming using the emulator save states in order to have anything remotely close to a good time.
-
-Magic has the same problem as well. While you can unlock a wide number of magical items and abilities, the difficulty of recovering your magic power highly discourages you from using most of them outside of when they are strictly needed, reducing the variety of gameplay quite signifigantly.
-
-After considering several options, I decided that the best thing I could do (or rather, could figure out how to do) was to implement a SLOW health and magic regeneration system. For your health, you will recover half a heart every 2 seconds, kicking 10 seconds after the last time you took damage. Similarly for magic, you will recover 1 point of magic every 2 seconds, kicking 10 seconds after the last time you use magic.
-
-For the record, the Health and Magic Regeneration are enabled/disabled indepentently of each other. In some future version, I may allow the player to configure the regeneration rates and delays to their own liking.
+...
 
 
 ## 3) How To Configure:
 
-See that file named "Default_GameConfig.txt"? Open it.
-
-This file controls which major features are enabled. When a ROM is loaded, the emulator reads through this file, line by line, looking for a handful of flags. If a flag is found, it checks the next line for either 'true' or 'false', which determines whether the feature is enabled or disabled. If the line contains the '#' character, it is ignored.
-
-The current flags are:
-
-'UseNewControls' - This enables the new controls I discussed above, including the new strafing button.
-
-'NoChargeForDash' - Disables the wind-up time for the Pegesus Boots.
-
-'DropsNeverVanish' - Prevents item drops in the current area from disappearing until you leave. Just handy.
-
-'BalancedHealthRegen" - This enables the health regeneration I discussed above.
-
-'BalancedMagicRegen' - This enables the magic regeneration I discussed above.
-
-There mey be some flags for experimental features that I'm still working on. They will be marked properly, and you should really leave these off, as some of them WILL break the game and none of them work properly yet.
-
-If a flag is never found, the associated feature will be disabled.
-
-You can have unique settings for ROMs by creating a file with your ROM name + '_GameConfig.txt' in the Patches folder (example: if your ROM is named 'MyHack.smc', then you need to make a file named 'MyHack_GameConfig.txt' in the patches folder. If you're still confused, the stdout.txt file will show you the name of the GameConfig file it's looking for when you open a ROM). Setting found in this file will override the defaults.
-
-Note, these files are COMPLETELY CASE SENSITIVE!!!
-
-Everything else works the same way it does in normal Snes9X.
+...
 
 
 ## 4) QIAWBFAIIDATH (Questions I Assume Will Be Frequently Asked If I Don't Answer Them Here):
 
-Q: What ROMs is this compatable with? A: As far as I know, any version of 'A Link to the Past' (or any ROM Hack based on it) should work fine. I've tested the emulator with bothe the vanilla game and the Redux version I mentioned in the intro, and haven't had any issues.
+Q: What ROMs is this compatable with? A:
 
-... Oh, also, in case this isn't obvious: don't try to use a non-ALTTP-based ROM with this emulator. I have no idea what will happen, but I doubt it will be good.
+...
 
 Q: Where can I get your source code? Where are your changes? A: Right Here.
-
 
 If people are interested, I could put in a programmer's API/Documentation at some point.
 
@@ -165,13 +106,7 @@ Q: Does this work on Mac/Linux? A: No.
 
 ## 5) Links 
 
-http://www.SNES9x.com/ - Snes9X's official website. If it's not a question related to my changes, look here.
 
-https://github.com/LTSchmiddy/link-to-the-past-pc-edition-snes9x - The source code for this project.
-
-https://github.com/snes9xgit/snes9x - The source code for the official version of Snes9X, on which my version is based.
-
-https://www.romhacking.net/hacks/2594/ - ShadowOne333's "A Link to the Past: Redux" rom hack. IT makes a number of improvements to the game, and so I definitely recommend using this ROM hack over the vanilla version.
 
 https://visualstudio.microsoft.com/downloads/ - If you wanna try to work on my code, you're gonna need Microsoft Visual Studio 2017 - Community Edition (which is what I used).
 
