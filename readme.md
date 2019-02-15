@@ -33,6 +33,8 @@ Well, as I am continuing my adventures in building emulator-based PC versions of
 
 Admittedly, this was probably the trickiest one I've attempted so far. I decided to base the project on Project64, since that's been my first choice for a N64 emulator since forever and I'm the most familiar with. Also, I was actually able to figure out how to compile it (not always a guarantee with these things). Well, since most of the major components of the emulator are broken into different plugins, it was a bit tricky to expose all of the functions and variables I needed to manipulate. Additionally, version 2.4 of Project64 (only available if build from sourcecode) has a built-in Javascript interpreter, mainly for use with the debugger. I decided to expand and modify it to work as a auxilary scripting system to go along with the emulator execution. That way, I could code my game mods in JavaScript, which is easier to write and doesn't require compilation for the smallest tweak, instead of hardcoding them into the C++ of the emulator... This turned out to be rather tricky, but I eventually got it to work.
 
+---
+
 This project is a customized build of Project64 v2.4, specially designed for running The Legend of Zelda: Majora's Mask. My goal is to create a gamepley experience that feels native (or as close to it as possible) to PCs.
 
 This project also includes some (entirely optional) tweaks and minor improvements to the original game, including better textures, Hotkeys for a Ocarina of Time and the transformation masks, magic regeneration, and bigger wallets and ammo bags. All of these mods are written with a JavaScript API, so users can easily tweak/change them to suit their desires, or even to implement their own mods.
