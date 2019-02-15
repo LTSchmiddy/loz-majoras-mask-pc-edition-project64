@@ -31,6 +31,8 @@ Date of Readme: 2/14/2019
 
 Well, as I am continuing my adventures in building emulator-based PC versions of retro games, I decided to tackle my own favorite game of all time: **The Legend of Zelda - Majora's Mask**.
 
+Admittedly, this was probably the trickiest one I've attempted so far. I decided to base the project on Project64, since that's been my first choice for a N64 emulator since forever and I'm the most familiar with. Also, I was actually able to figure out how to compile it (not always a guarantee with these things). Well, since most of the major components of the emulator are broken into different plugins, it was a bit tricky to expose all of the functions and variables I needed to manipulate. Additionally, version 2.4 of Project64 (only available if build from sourcecode) has a built-in Javascript interpreter, mainly for use with the debugger. I decided to expand and modify it to work as a auxilary scripting system to go along with the emulator execution. That way, I could code my game mods in JavaScript, which is easier to write and doesn't require compilation for the smallest tweak, instead of hardcoding them into the C++ of the emulator... This turned out to be rather tricky, but I eventually got it to work.
+
 This project is a customized build of Project64 v2.4, specially designed for running The Legend of Zelda: Majora's Mask. My goal is to create a gamepley experience that feels native (or as close to it as possible) to PCs.
 
 This project also includes some (entirely optional) tweaks and minor improvements to the original game, including better textures, Hotkeys for a Ocarina of Time and the transformation masks, magic regeneration, and bigger wallets and ammo bags. All of these mods are written with a JavaScript API, so users can easily tweak/change them to suit their desires, or even to implement their own mods.
@@ -38,9 +40,9 @@ This project also includes some (entirely optional) tweaks and minor improvement
 It also features a custom ROM file that makes the Razor Sword a permenant upgrade to your sword, instead of reverting to the Kokiri Sword after 100 uses or playing the Song of Time (this doesn't make the Gilded Sword pointless, however, since the Gilded Sword still does more damage than the Razor Sword), and I've changed some of the dialog to match. However, if you don't like this, a vanilla version of the ROM is available as well.
 
 
-## 2) Features 
+## 2) Features:
 
-So, exactly what does "The Legend of Zelda: A Link to the Past - PC Edition" have to offer?
+So, exactly what does "The Legend of Zelda: Majora's Mask - PC Edition" have to offer?
 
 Each major feature listed below can be enabled or disabled in a special config file. More on that later.
 
