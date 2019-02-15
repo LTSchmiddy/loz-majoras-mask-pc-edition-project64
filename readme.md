@@ -2,10 +2,6 @@
 
 (Note, this readme is still under construction, and I'm still in the process of organizing and uploading the project, and packaging a release. Stay tuned!)
 
-
-
-
-
 DISCLAIMER: 'The Legend of Zelda: A Link to the Past' and the entire 'The Legend of Zelda' franchise are the intellectual property of Nintendo Co., Ltd. I have no affiliation with them, nor do I have any legal rights or ownership over the aforementioned properties. I'm just a fan.
 
 Then again, you probably new that.
@@ -31,7 +27,6 @@ Date of Readme: 2/5/2019
 5. Conclusion
 
 
-
 ## 1) Introduction:
 
  (TBH, you've probably already read this part whereever you downloaded this project.)
@@ -47,16 +42,13 @@ This project also includes some (entirely optional) tweaks and minor improvement
 It also features a custom ROM file that makes the Razor Sword a permenant upgrade to your sword, instead of reverting to the Kokiri Sword after 100 uses or playing the Song of Time (this doesn't make the Gilded Sword pointless, however, since the Gilded Sword still does more damage than the Razor Sword), and I've changed some of the dialog to match. However, if you don't like this, a vanilla version of the ROM is available as well.
 
 
-
-=====================================================================================================
-
-===== 2) Features ===================================================================================
+## 2) Features 
 
 So, exactly what does "The Legend of Zelda: A Link to the Past - PC Edition" have to offer?
 
 Each major feature listed below can be enabled or disabled in a special config file. More on that later.
 
-a) ADDITIONAL CONTROLS:
+### a) ADDITIONAL CONTROLS:
 
 I've added a number of additional controls to the game. This system works by hijacking joypads 2, 3, and 4 in the emulator, so they do work with hardware controllers. The programs's input configuration screen reflects these new controls.
 
@@ -104,7 +96,7 @@ Menu - Back/Cancel: Backspace
 
 Pause Game: Escape (Not in menus)
 
-b) IMPROVED MOVEMENT:
+### b) IMPROVED MOVEMENT:
 
 Admittedly, because of ALTTP's simplistic movement controls, it can be VERY difficult to avoid taking damage from enemies because your shield is largely useless. It works when you're standing in the exact right spot, and if you turn away to adjust your position the shield is no longer between you and your enemy. Basically, it's very difficult to actually make use of.
 
@@ -112,7 +104,7 @@ To fix this, I've added a strafe button (Left Shift by default) to the emulator.
 
 Additionally, I've made the it so there is no wind-up time for running with the Pegesus Boots. In all of the later titles in the series, Link has his incredibly handy dive-roll to help him quickly manuver away from enemy attacks in a pinch. By removing the wind-up time on the Pegesus Boots, they can be used in a similar manner.
 
-c) HEALTH/MAGIC REGENERATION:
+### c) HEALTH/MAGIC REGENERATION:
 
 I know some people may not like this next feature, so let me remind you that it is EASILY disabled if you wish.
 
@@ -124,9 +116,8 @@ After considering several options, I decided that the best thing I could do (or 
 
 For the record, the Health and Magic Regeneration are enabled/disabled indepentently of each other. In some future version, I may allow the player to configure the regeneration rates and delays to their own liking.
 
-=====================================================================================================
 
-===== 3) How To Configure ===========================================================================
+## 3) How To Configure:
 
 See that file named "Default_GameConfig.txt"? Open it.
 
@@ -154,9 +145,8 @@ Note, these files are COMPLETELY CASE SENSITIVE!!!
 
 Everything else works the same way it does in normal Snes9X.
 
-=====================================================================================================
 
-===== 4) QIAWBFAIIDATH (Questions I Assume Will Be Frequently Asked If I Don't Answer Them Here) ====
+## 4) QIAWBFAIIDATH (Questions I Assume Will Be Frequently Asked If I Don't Answer Them Here):
 
 Q: What ROMs is this compatable with? A: As far as I know, any version of 'A Link to the Past' (or any ROM Hack based on it) should work fine. I've tested the emulator with bothe the vanilla game and the Redux version I mentioned in the intro, and haven't had any issues.
 
@@ -172,9 +162,8 @@ Q: Does this work on Mac/Linux? A: It could at some point. But not as of yet. On
 
 ... I'll be adding to this part as people begin to ask questions....
 
-=====================================================================================================
 
-===== 5) Links ======================================================================================
+## 5) Links 
 
 http://www.SNES9x.com/ - Snes9X's official website. If it's not a question related to my changes, look here.
 
@@ -186,9 +175,8 @@ https://www.romhacking.net/hacks/2594/ - ShadowOne333's "A Link to the Past: Red
 
 https://visualstudio.microsoft.com/downloads/ - If you wanna try to work on my code, you're gonna need Microsoft Visual Studio 2017 - Community Edition (which is what I used).
 
-=====================================================================================================
 
-===== 6) Conclusion =================================================================================
+## 6) Conclusion 
 
 Well, that's all I gotta say about this project. Give it a play, lemme know what ya think!
 
@@ -196,4 +184,3 @@ If you got questions or comments or feedback, hit me up on Twitter (@Lt_ASchmidd
 
 LT_Schmiddy, out.
 
-=====================================================================================================
