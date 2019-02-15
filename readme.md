@@ -50,7 +50,7 @@ No config file yet. Working on that...
 
 ### a) ADDITIONAL CONTROLS:
 
-I've added a number of additional controls to the game. This system works by hijacking joypads 2, 3, and 4 in the emulator, so they do work with hardware controllers. The programs's input configuration screen reflects these new controls.
+...
 
 **** Vanilla Controls ****
 
@@ -74,7 +74,7 @@ Menu - Back/Cancel: Backspace
 
 Pause Game: Escape (Not in menus)
 
-### b) IMPROVED MOVEMENT:
+### b) IMPROVED RAZOR SWORD:
 
 ...
 
