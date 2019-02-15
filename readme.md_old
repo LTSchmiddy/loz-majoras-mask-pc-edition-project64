@@ -1,0 +1,11 @@
+# The Legend of Zelda: Majora's Mask - PC Edition
+
+(Note, this readme is still under construction, and I'm still in the process of organizing and uploading the project, and packaging a release. Stay tuned!)
+
+
+
+This project is a customized build of Project64 v2.4, specially designed for running The Legend of Zelda: Majora's Mask. My goal is to create a gamepley experience that feels native (or as close to it as possible) to PCs.
+
+This project also includes some (entirely optional) tweaks and minor improvements to the original game, including better textures, Hotkeys for a Ocarina of Time and the transformation masks, magic regeneration, and bigger wallets and ammo bags. All of these mods are written with a JavaScript API, so users can easily tweak/change them to suit their desires, or even to implement their own mods.
+
+It also features a custom ROM file that makes the Razor Sword a permenant upgrade to your sword, instead of reverting to the Kokiri Sword after 100 uses or playing the Song of Time (this doesn't make the Gilded Sword pointless, however, since the Gilded Sword still does more damage than the Razor Sword), and I've changed some of the dialog to match. However, if you don't like this, a vanilla version of the ROM is available as well.
