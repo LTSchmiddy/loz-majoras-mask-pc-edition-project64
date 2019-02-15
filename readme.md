@@ -180,7 +180,7 @@ https://visualstudio.microsoft.com/downloads/ - If you wanna try to work on my c
 
 Well, that's all I gotta say about this project. Give it a play, lemme know what ya think!
 
-If you got questions or comments or feedback, hit me up on Twitter (@Lt_ASchmiddy) or Discord (LT_Schmiddy), and I'll be glad to talk / help you out!
+If you got questions or comments or feedback, hit me up on Twitter (@Lt_ASchmiddy) or Discord (LT_Schmiddy#4805), and I'll be glad to talk / help you out!
 
 LT_Schmiddy, out.
 
