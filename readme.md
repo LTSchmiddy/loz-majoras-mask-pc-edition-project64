@@ -2,15 +2,15 @@
 
 (Note, this readme is still under construction, and I'm still in the process of organizing and uploading the project, and packaging a release. Stay tuned!)
 
-DISCLAIMER: 'The Legend of Zelda: A Link to the Past' and the entire 'The Legend of Zelda' franchise are the intellectual property of Nintendo Co., Ltd. I have no affiliation with them, nor do I have any legal rights or ownership over the aforementioned properties. I'm just a fan.
+DISCLAIMER: 'The Legend of Zelda: Majora's Mask' and the entire 'The Legend of Zelda' franchise are the intellectual property of Nintendo Co., Ltd. I have no affiliation with them, nor do I have any legal rights or ownership over the aforementioned properties. I'm just a fan.
 
 Then again, you probably new that.
 
 DISCLAIMER 2: This README is designed for someone not TOO familiar with emulation and ROM-Hacking. Sorry if this is too dumbed down for you. Please read the whole thing anyway.
 
-Download Latest Stable Build: 
+Download Latest Stable Build: getting there....
 
-Date of Readme: 2/5/2019
+Date of Readme: 2/14/2019
 
 ## Table of Contents:
 
@@ -29,11 +29,7 @@ Date of Readme: 2/5/2019
 
 ## 1) Introduction:
 
- (TBH, you've probably already read this part whereever you downloaded this project.)
-
-Well, with how well my "Super Metroid - PC Edition" (aka: SMPE) project turned out (or, at least, how happy I was with with it), I figured: why stop here? Figuring out the guts of the Snes9X enough to figure out where/how to insert my game features and tweaks had been the tricky part. Once I solved that, coding the actual features themselves was fairly straightforward. I could easily generalize my source-code, and use it to build custom emulators for other retro games as well. Specifically, one other game I wanted to do this for was "The Legend of Zelda: A Link to the Past": While it is a time-honored classic and a fun game in its own right, I'm of the opinion that some aspects of the game could have aged better.
-
-I actually started working on this about halfway through my development of SMPE. While I had it mostly finished at about that time, there was having difficulty finding the memory address of a specific variable. After playing with it on and off for the last couple months, I stumbled on the solution somewhat by accident. After implementing it, I feel confident that this is ready for a public release.
+Well, as I am continuing my adventures in building emulator-based PC versions of retro games, I decided to tackle my own favorite game of all time: **The Legend of Zelda - Majora's Mask**.
 
 This project is a customized build of Project64 v2.4, specially designed for running The Legend of Zelda: Majora's Mask. My goal is to create a gamepley experience that feels native (or as close to it as possible) to PCs.
 
@@ -154,11 +150,11 @@ Q: What ROMs is this compatable with? A: As far as I know, any version of 'A Lin
 
 Q: Where can I get your source code? Where are your changes? A: Right Here.
 
-The code I've added it mostly contained in the files SMMods.cpp and SMMods.h, and in the directory named ModScripts, along with a slight reworking of the beginning of the program's Main() method, found in wsnes9x.cpp, and some parts of UI-related code also in that file. Everything else is either making certain methods available outside of their origin file, or calls to the methods in SMMods.cpp to make these features work.
 
 If people are interested, I could put in a programmer's API/Documentation at some point.
 
-Q: Does this work on Mac/Linux? A: It could at some point. But not as of yet. Once I'm confident that the windows version is stable and is fully functional, then I'll consider other platforms.
+
+Q: Does this work on Mac/Linux? A: No.
 
 ... I'll be adding to this part as people begin to ask questions....
 
