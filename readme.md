@@ -60,11 +60,11 @@ Action/Interact/Roll: Space Bar
 
 Use Sword: J
 
-
+...
 
 **** New Controls ****
 
-
+...
 
 Menu - Navigate: Arrow Keys
 
